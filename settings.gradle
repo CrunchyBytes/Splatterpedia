@@ -1,2 +1,2 @@
 include ':app'
-rootProject.name = "SQLapp"
+rootProject.name = "160046_FinalProjectApp"
