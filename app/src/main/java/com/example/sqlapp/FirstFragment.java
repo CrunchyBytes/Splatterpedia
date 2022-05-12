@@ -43,7 +43,7 @@ public class FirstFragment extends Fragment
 
     private void initializeView()
     {
-        nameTextView = (TextView) view.findViewById(R.id.nameTextView);
+        nameTextView = (TextView) view.findViewById(R.id.nameLabel);
         ageTextView = (TextView) view.findViewById(R.id.ageTextView);
         goToQueriesButtonSetOnClickListener(view);
         insertButtonSetOnClickListener(view);

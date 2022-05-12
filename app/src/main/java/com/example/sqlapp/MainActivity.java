@@ -1,5 +1,4 @@
 package com.example.sqlapp;
-
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -11,16 +10,11 @@ import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-
 import android.provider.BaseColumns;
 import android.view.View;
 
 import android.view.Menu;
 import android.view.MenuItem;
-
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
 
 /*  Activity: The entry point for an app's interaction
     with the user.
@@ -66,7 +60,7 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = findViewById(R.id.fab);
+        FloatingActionButton fab = findViewById(R.id.addArtworkButton);
         fab.setOnClickListener(new View.OnClickListener()
         {
             @Override
