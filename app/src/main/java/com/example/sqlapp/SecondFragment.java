@@ -12,25 +12,24 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 
+import com.example.app160046.Artwork;
+import com.google.android.material.snackbar.Snackbar;
+
 public class SecondFragment extends Fragment
 {
     View view;
     // References to the GUI components
     TextView nameTextView;
-    TextView ageTextView;
-    TextView newNameTextView;
-    Button queryButton;
-    Button deleteButton;
-    Button showAllButton;
-    Button updateButton;
+    TextView statusTextView;
+    Button uploadButton;
     Button backButton;
+    Button addButton;
     //
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState)
     {
-
         view = inflater.inflate(R.layout.fragment_second, container, false);
         return view;
     }//end onCreateView
@@ -46,20 +45,14 @@ public class SecondFragment extends Fragment
     private void initializeView()
     {
         nameTextView = (TextView) view.findViewById(R.id.nameTextView);
-        newNameTextView = (TextView) view.findViewById(R.id.statusTextView);
-        ageTextView = (TextView) view.findViewById(R.id.ageTextViewQuery);
-        queryButton = (Button)  view.findViewById(R.id.buttonUploadImage);
-        deleteButton = (Button)  view.findViewById(R.id.buttonDelete);
-        showAllButton = (Button)  view.findViewById(R.id.selectAllButton);
-        updateButton = (Button)  view.findViewById(R.id.buttonAddArtwork);
-        //
+        statusTextView = (TextView) view.findViewById(R.id.statusTextView);
+
+        backButton = (Button) view.findViewById(R.id.backButton);
+        uploadButton = (Button) view.findViewById(R.id.buttonUploadImage);
+        addButton = (Button) view.findViewById(R.id.buttonAddArtwork);
+
         backButtonSetOnClickListener(view);
-        showAllButtonSetOnClickListener(view);
-        queryButtonSetOnClickListener(view);
-        deleteButtonSetOnClickListener(view);
-        //
-        MyLibrary.retractKeyboardWhenActionDone(Model.activity, nameTextView);
-        MyLibrary.retractKeyboardWhenActionDone(Model.activity, newNameTextView);
+        addArtworkButtonSetOnClickListener(view);
     }//end initializeView
 
 
@@ -82,56 +75,28 @@ public class SecondFragment extends Fragment
         });
     }//end backButtonSetOnClickListener
 
-
-    private void showAllButtonSetOnClickListener(View view)
+    private void addArtworkButtonSetOnClickListener(View view)
     {
-        showAllButton = view.findViewById(R.id.selectAllButton);
-        showAllButton.setOnClickListener(new View.OnClickListener()
+        addButton = view.findViewById(R.id.buttonAddArtwork);
+        addButton.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View view)
             {
-                Model.persons = Model.myDatabase.selectAll(Model.activity);
-                Model.showPersonsList();
-            }//end onClick
-        });
-    }//end showAllButtonSetOnClickListener
-
-
-    private void queryButtonSetOnClickListener(View view)
-    {
-        queryButton = view.findViewById(R.id.buttonUploadImage);
-        queryButton.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View view)
-            {
-                String aName;
-                int age;
-                Person person;
+                Artwork artwork;
+                String name;
+                String status;
                 //
-                aName = nameTextView.getText().toString();
-                Model.persons = Model.myDatabase.selectWhereNameIs(Model.activity, aName);
-                person = Model.persons.get(0);
-                age = person.getAge();
-                ageTextView.setText(String.valueOf(age));
+                name = nameTextView.getText().toString();
+                status = statusTextView.getText().toString();
+                artwork = new Artwork(name, status);
+                // The Context is the activity
+                Model.myDatabase.insertIntoDB(Model.activity, artwork);
+
+                Snackbar.make(view, "Artwork successfully added to the database", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
             }//end onClick
         });
-    }//end queryButtonSetOnClickListener
-
-
-    private void deleteButtonSetOnClickListener(View view)
-    {
-        deleteButton = view.findViewById(R.id.buttonDelete);
-        deleteButton.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View view)
-            {
-                Model.myDatabase.deleteFromDB(Model.activity, nameTextView.getText().toString());
-            }//end onClick
-        });
-    }//end deleteButtonSetOnClickListener
-
+    }//end insertButtonSetOnClickListener
 
 }//end Fragment

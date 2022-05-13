@@ -21,23 +21,6 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/ageTextViewQuery"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="77dp"
-        android:layout_marginTop="344dp"
-        android:layout_marginEnd="196dp"
-        android:width="50dp"
-        android:background="#C1D8A7"
-        android:singleLine="true"
-        android:textIsSelectable="true"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/statusLabel"
-        app:layout_constraintTop_toBottomOf="@+id/nameTextView" />
-
-    <TextView
         android:id="@+id/fragment_secondTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -60,7 +43,7 @@
         android:layout_height="201dp"
         tools:layout_editor_absoluteX="34dp"
         tools:layout_editor_absoluteY="212dp"
-        tools:src="@drawable/Select_image" />
+        tools:src="@drawable/select_image" />
 
     <TextView
         android:id="@+id/nameLabel"
