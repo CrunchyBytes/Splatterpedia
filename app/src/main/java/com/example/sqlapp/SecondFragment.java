@@ -45,13 +45,13 @@ public class SecondFragment extends Fragment
 
     private void initializeView()
     {
-        nameTextView = (TextView) view.findViewById(R.id.nameTextViewQuery);
-        newNameTextView = (TextView) view.findViewById(R.id.newNameTextView);
+        nameTextView = (TextView) view.findViewById(R.id.nameTextView);
+        newNameTextView = (TextView) view.findViewById(R.id.statusTextView);
         ageTextView = (TextView) view.findViewById(R.id.ageTextViewQuery);
-        queryButton = (Button)  view.findViewById(R.id.buttonQuery);
+        queryButton = (Button)  view.findViewById(R.id.buttonUploadImage);
         deleteButton = (Button)  view.findViewById(R.id.buttonDelete);
         showAllButton = (Button)  view.findViewById(R.id.selectAllButton);
-        updateButton = (Button)  view.findViewById(R.id.buttonUpdate);
+        updateButton = (Button)  view.findViewById(R.id.buttonAddArtwork);
         //
         backButtonSetOnClickListener(view);
         showAllButtonSetOnClickListener(view);
@@ -100,7 +100,7 @@ public class SecondFragment extends Fragment
 
     private void queryButtonSetOnClickListener(View view)
     {
-        queryButton = view.findViewById(R.id.buttonQuery);
+        queryButton = view.findViewById(R.id.buttonUploadImage);
         queryButton.setOnClickListener(new View.OnClickListener()
         {
             @Override
